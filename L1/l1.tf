@@ -2,7 +2,7 @@ provider "aws" {}
 
 resource "aws_instance" "my_AWS_linux" {
   count         = 1
-  ami           = "ami-0cb0b94275d5b4aec"
+  ami           = data.aws_ami.latest_ubuntu.id
   instance_type = "t3.micro"
 
   tags = {
