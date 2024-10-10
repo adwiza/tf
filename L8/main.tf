@@ -104,9 +104,10 @@ resource "aws_elb" "web" {
     var.common_tags,
 
     {
-    key                 = "Name"
-    value               = "WebServer-Highly-Available-ELB"
-    propagate_at_launch = true
+      Name = "${var.common_tags["Environment"]} WebServer-Highly-Available-ELB"
+    # key                 = "Name"
+    # value               = "WebServer-Highly-Available-ELB"
+    # propagate_at_launch = true
     },
   )
 }
