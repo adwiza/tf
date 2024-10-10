@@ -100,9 +100,15 @@ resource "aws_elb" "web" {
     interval            = 15
   }
 
-  tags = {
-    Name = "WebServer-Highly-Available-ELB"
-  }
+  tags = merge(
+    var.common_tags,
+
+    {
+    key                 = "Name"
+    value               = "WebServer-Highly-Available-ELB"
+    propagate_at_launch = true
+    },
+  )
 }
 
 resource "aws_default_subnet" "default_az1" {
